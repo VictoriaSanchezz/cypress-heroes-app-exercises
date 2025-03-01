@@ -36,14 +36,16 @@ describe('when admin user is logged in', () => {
         cy.get("[type='email']").type('admin@test.com');
         cy.get("[type='password']").type('test123');
         cy.get("form button.bg-blue-700").contains('Sign in').click();
-        cy.get("button[data-cy='pencil']").eq(2).click();  
+        cy.get("button[data-cy='pencil']").eq(2).click(); 
+        cy.get("form").should('be.visible'); 
     });
 
     it('admin user should be able to logout', () => {
-        cy.get("nav button").click();
+        cy.get("nav button").contains('Login').click();
         cy.get("[type='email']").type('admin@test.com');
         cy.get("[type='password']").type('test123');
         cy.get("form button.bg-blue-700").contains('Sign in').click();
         cy.get("nav button").contains('Logout').click();
+        cy.get("nav button").contains('Login').should('be.visible');
     });
 });

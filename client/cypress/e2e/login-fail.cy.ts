@@ -5,13 +5,13 @@ describe('when not logged in', () => {
 
     it('clicking on like should alert the user they need to login', () => {
         cy.get("button[data-cy='like']").eq(4).click();
-        cy.get(".rounded-md").contains('You must log in to like.');
+        cy.get(".rounded-md").contains('You must log in to like.').should('be.visible');
         cy.get(".bg-white button").contains('Ok').click();
     });
 
     it('clicking on hire should alert the user they need to login', () => {
         cy.get("button[data-cy='money']").eq(4).click();
-        cy.get(".rounded-md").contains('You must log in to hire this hero.');
+        cy.get(".rounded-md").contains('You must log in to hire this hero.').should('be.visible');
         cy.get(".bg-white button").contains('Ok').click();
     });
 
@@ -20,6 +20,6 @@ describe('when not logged in', () => {
         cy.get("[type='email']").type('test@hero.com');
         cy.get("[type='password']").type('test1234');
         cy.get("form button.bg-blue-700").contains('Sign in').click();
-        cy.get("form .text-red-500").contains('Invalid email or password');
+        cy.get("form .text-red-500").contains('Invalid email or password').should('be.visible');
     });
 });
