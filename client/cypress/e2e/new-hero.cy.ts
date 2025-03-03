@@ -15,6 +15,7 @@ describe('when admin user is logged in', () => {
         cy.get("[data-cy='fansInput']").type('73');
         cy.get("[data-cy='savesInput']").type('62');
         cy.get("[name='powers']").select('6');
+        cy.get("[data-cy='avatarFile']").selectFile('cypress/fixtures/ts-glorious-avatar.jpg');
         cy.get("form button.bg-blue-700").contains('Submit').click();
         cy.get("[data-cy='hero-card']").contains('TS Glorious').should('be.visible');
     });
@@ -40,5 +41,4 @@ describe('when admin user is logged in', () => {
         cy.get(".bg-white").contains('Delete Hero?').should('be.visible');
         cy.get(".bg-white button.bg-red-600").contains('Yes').click();
     });
-
 });

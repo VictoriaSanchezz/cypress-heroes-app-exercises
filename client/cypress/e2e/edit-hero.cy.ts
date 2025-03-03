@@ -22,5 +22,4 @@ describe('when admin user is logged in', () => {
         cy.get("[data-cy='hero-card'] [data-cy='fans']").eq(1).contains('72').should('be.visible');
         cy.get("[data-cy='hero-card'] [data-cy='saves']").eq(1).contains('84').should('be.visible');
     });
-
 });

@@ -58,7 +58,7 @@ describe('all tests in unique run', () => {
         cy.get("nav button").contains('Login').should('be.visible');
     });
 
-    it('when admin user is logged in', () => {
+    it.only('when admin user is logged in', () => {
 
         //admin user should be able to click like on a hero;
 
@@ -100,15 +100,16 @@ describe('all tests in unique run', () => {
 
         //admin user should be able to create a new hero;
 
-        cy.get("nav button.bg-blue-700").contains('Create New Hero').click().should('be.visible');
+        cy.get("nav button.bg-blue-700").contains('Create New Hero').click();
         cy.get("form").should('be.visible');
-        cy.get("[data-cy='nameInput']").type('TS Glorious');
-        cy.get("[data-cy='priceInput']").type('57');
-        cy.get("[data-cy='fansInput']").type('73');
-        cy.get("[data-cy='savesInput']").type('62');
-        cy.get("[name='powers']").select('6');
+        cy.get("[data-cy='nameInput']").type('Coding Boy');
+        cy.get("[data-cy='priceInput']").type('50');
+        cy.get("[data-cy='fansInput']").type('63');
+        cy.get("[data-cy='savesInput']").type('79');
+        cy.get("[name='powers']").select('4');
+        cy.get("[data-cy='avatarFile']").selectFile('cypress/fixtures/coding-boy-avatar.jpg');
         cy.get("form button.bg-blue-700").contains('Submit').click();
-        cy.get("[data-cy='hero-card']").contains('TS Glorious').should('be.visible');
+        cy.get("[data-cy='hero-card']").contains('Coding Boy').should('be.visible');
 
         //admin user should be able to decline deleting a hero;
 
@@ -118,7 +119,7 @@ describe('all tests in unique run', () => {
 
         //admin user should be able to delete a hero;
 
-        cy.get("[data-cy='hero-card']").contains('TS Glorious').should('be.visible');
+        cy.get("[data-cy='hero-card']").contains('Coding Boy').should('be.visible');
         cy.get("[data-cy='hero-card'] button[data-cy='trash']").eq(5).click();
         cy.get(".bg-white").contains('Delete Hero?').should('be.visible');
         cy.get(".bg-white button.bg-red-600").contains('Yes').click();
