@@ -58,7 +58,7 @@ describe('all tests in unique run', () => {
         cy.get("nav button").contains('Login').should('be.visible');
     });
 
-    it.only('when admin user is logged in', () => {
+    it('when admin user is logged in', () => {
 
         //admin user should be able to click like on a hero;
 
